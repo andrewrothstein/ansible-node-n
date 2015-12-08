@@ -10,8 +10,10 @@
 
 - name: install...
   environment:
-    N_PREFIX : '/opt/node-n'
+    N_PREFIX : /opt/node-n
   command: /tmp/n-install.sh -y
+  args:
+    creates: /opt/node-n
 
 - name: include in path...
   copy: >-
@@ -20,3 +22,6 @@
     mode=0644
     owner=root
     group=root
+
+- name: install latest npm
+  command: /opt/node-n/bin/npm install -g npm@latest
