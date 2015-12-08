@@ -1,0 +1,22 @@
+---
+# tasks file for node-n
+- name: downloading installer...
+  get_url: >
+    url=http://git.io/n-install
+    dest=/tmp/n-install.sh
+    owner=root
+    group=root
+    mode=0755
+
+- name: install...
+  environment:
+    N_PREFIX : '/opt/node-n'
+  command: /tmp/n-install.sh -y
+
+- name: include in path...
+  copy: >-
+    src=etc/profile.d/node-n.sh
+    dest=/etc/profile.d/node-n.sh
+    mode=0644
+    owner=root
+    group=root
