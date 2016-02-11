@@ -30,4 +30,4 @@
     group=root
 
 - name: install latest npm
-  command: /opt/node-n/bin/npm install -g npm@latest
+  command: bash -l -c '/opt/node-n/bin/npm install -g npm@latest'
