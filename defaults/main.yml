@@ -1,2 +1,3 @@
 ---
-# defaults file for node-n
+node_n_url : http://git.io/n-install
+node_n_prefix : /opt/node-n

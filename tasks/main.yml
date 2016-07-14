@@ -1,5 +1,7 @@
 ---
 - name: installing dependencies...
+  become: yes
+  become_user: root
   package: name='{{item}}' state=present
   with_items:
     - git
@@ -7,27 +9,33 @@
     - wget
 
 - name: downloading installer...
+  become: yes
+  become_user: root
   get_url: >
-    url=http://git.io/n-install
+    url={{node_n_url}}
     dest=/tmp/n-install.sh
-    owner=root
-    group=root
     mode=0755
 
 - name: install...
+  become: yes
+  become_user: root
   environment:
-    N_PREFIX : /opt/node-n
+    N_PREFIX : '{{node_n_prefix}}'
   command: /tmp/n-install.sh -y
   args:
-    creates: /opt/node-n
+    creates: '{{node_n_prefix}}'
 
 - name: include in path...
-  copy: >-
-    src=etc/profile.d/node-n.sh
-    dest=/etc/profile.d/node-n.sh
+  become: yes
+  become_user: root
+  with_items:
+    - etc/profile.d/node-n.sh
+  template: >-
+    src={{item}}.j2
+    dest=/{{item}}
     mode=0644
-    owner=root
-    group=root
 
 - name: install latest npm
-  command: bash -l -c '/opt/node-n/bin/npm install -g npm@latest'
+  become: yes
+  become_user: root
+  command: bash -l -c '{{node_n_prefix}}/bin/npm install -g npm@latest'
