@@ -1,3 +1,3 @@
 ---
 node_n_url : http://git.io/n-install
-node_n_prefix : /usr/local
+node_n_prefix : /usr/local/n
