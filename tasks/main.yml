@@ -22,7 +22,7 @@
   environment:
     N_PREFIX: '{{node_n_prefix}}'
     PATH: '{{node_n_prefix}}/bin'
-  command: npm install -g npm@latest
+  command: 'npm install -g npm@latest'
   
 - name: include in path...
   become: yes
