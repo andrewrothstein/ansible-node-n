@@ -23,7 +23,7 @@
   environment:
     N_PREFIX: '{{node_n_prefix}}'
     PATH: '/bin:/usr/bin:/usr/local/bin:{{node_n_prefix}}/bin'
-  command: 'npm update -g npm'
+  command: '{{node_n_prefix}}/bin/npm update -g npm'
   
 - name: include in path...
   become: yes
