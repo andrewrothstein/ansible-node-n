@@ -29,4 +29,6 @@ dependencies:
     version: v3.0.0
   - role: andrewrothstein.curl
     version: v1.0.0
+  - role: andrewrothstein.bash
+    version: v1.0.0
 
