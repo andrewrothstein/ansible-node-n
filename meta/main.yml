@@ -15,10 +15,14 @@ galaxy_info:
         - all
     - name: Ubuntu
       versions:
-        - all
+        - xenial
 
   galaxy_tags:
     - node
 
-dependencies: []
-  
+dependencies:
+  - role: andrewrothstein.git
+    version: v3.0.0
+  - role: andrewrothstein.curl
+    version: v1.0.0
+
