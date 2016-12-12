@@ -14,7 +14,7 @@
     N_PREFIX : '{{node_n_prefix}}'
   command: /tmp/n-install.sh -y
   args:
-    creates: '{{node_n_prefix}}'
+    creates: '{{node_n_prefix}}/bin/n'
 
 - name: install latest npm
   become: yes
