@@ -13,7 +13,7 @@
   environment:
     N_PREFIX : '{{node_n_prefix}}'
     PATH: '/bin:/usr/bin:/usr/local/bin'
-  command: /tmp/n-install.sh -y
+  command: /tmp/n-install.sh -y stable
   args:
     creates: '{{node_n_prefix}}/bin/n'
 
