@@ -12,6 +12,7 @@
   become_user: root
   environment:
     N_PREFIX : '{{node_n_prefix}}'
+    PATH: '/usr/bin:/usr/local/bin'
   command: /tmp/n-install.sh -y
   args:
     creates: '{{node_n_prefix}}/bin/n'
@@ -21,7 +22,7 @@
   become_user: root
   environment:
     N_PREFIX: '{{node_n_prefix}}'
-    PATH: '{{node_n_prefix}}/bin'
+    PATH: '/usr/bin:/usr/local/bin:{{node_n_prefix}}/bin'
   command: 'npm install -g npm@latest'
   
 - name: include in path...
