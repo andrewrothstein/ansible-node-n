@@ -2,11 +2,15 @@
 - name: downloading installer...
   become: yes
   become_user: root
-  get_url: >
-    url={{node_n_url}}
-    dest=/tmp/n-install.sh
-    mode=0755
+  command: curl -L -o /tmp/n-install.sh {{node_n_url}}
 
+- name: fix permissions on installer file...
+  become: yes
+  become_user: root
+  file:
+    path: /tmp/n-install.sh
+    mode: 0755
+    
 - name: install...
   become: yes
   become_user: root
