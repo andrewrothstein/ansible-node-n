@@ -3,6 +3,8 @@
   become: yes
   become_user: root
   command: curl -L -o /tmp/n-install.sh {{node_n_url}}
+  args:
+    creates: /tmp/n-install.sh
 
 - name: fix permissions on installer file...
   become: yes
